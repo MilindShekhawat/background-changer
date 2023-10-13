@@ -4,6 +4,7 @@ import {useState} from 'react';
 
 let timerId;
 
+//Button Component
 function Button({myColor, onButtonClick}) {
   return (
     <button style={{background:`${myColor}`}} onClick={onButtonClick}>
@@ -17,11 +18,13 @@ export default function Home() {
   const interval = 2000;
   let randomColor = 0;
 
+  //Inital call to randomise BG
   if(!timerId){
     timerId = setInterval(randomizeBG, interval);
     console.log(`Started ${timerId}`);
   }
 
+  //Cycle through Colors
   function randomizeBG() {
     console.log(`COLOR set to ${randomColor}`);
     setColor(COLORS[randomColor++]);
@@ -31,6 +34,7 @@ export default function Home() {
     }
   }
 
+  //Normal Button Logic
   function handleClick(myColor){
     clearInterval(timerId);
     console.log(`Cleared ${timerId}`);
@@ -38,6 +42,7 @@ export default function Home() {
     setColor(myColor);
   }
 
+  //Randomiser Button Logic
   function handleClickTimed(){
     if(timerId == 1){
       timerId = setInterval(randomizeBG, interval);
