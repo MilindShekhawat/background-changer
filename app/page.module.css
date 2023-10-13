@@ -7,8 +7,8 @@
 }
 .randomButton {
   background: conic-gradient(
-    #DB4437 20deg, #F4B400 100deg,
-    #F4B400 140deg, #0F9D58 220deg,
-    #0F9D58 260deg, #DB4437 340deg
+    #F4B400 20deg,  #0F9D58 100deg,
+    #0F9D58 140deg, #DB4437 220deg,
+    #DB4437 260deg, #F4B400 340deg
       );
 }
