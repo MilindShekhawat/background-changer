@@ -25,13 +25,13 @@ export default function Home() {
   function randomizeBG() {
     console.log(`COLOR set to ${randomColor}`);
     setColor(COLORS[randomColor++]);
+
     if(randomColor == COLORS.length){
       randomColor = 0;
     }
   }
 
   function handleClick(myColor){
-    //timerId = setInterval(randomizeBG, interval);
     clearInterval(timerId);
     console.log(`Cleared ${timerId}`);
     timerId = 1;

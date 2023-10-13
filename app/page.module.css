@@ -2,9 +2,13 @@
   margin-top: 20px;
 }
 .randomContainer{
+  padding-top: 0px;
   border-radius: 0px 0px 5px 5px;
 }
 .randomButton {
-  margin-top: 0px;
-  background: conic-gradient(#DB4437 40deg, #F4B400 80deg, #F4B400 160deg, #0F9D58 200deg, #0F9D58 280deg, #DB4437 320deg);
+  background: conic-gradient(
+    #DB4437 20deg, #F4B400 100deg,
+    #F4B400 140deg, #0F9D58 220deg,
+    #0F9D58 260deg, #DB4437 340deg
+      );
 }
