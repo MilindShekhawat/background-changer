@@ -9,7 +9,7 @@ div {
   flex-flow: row wrap;  
   padding: 10px;
   gap: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: black;
 }
 
@@ -17,5 +17,5 @@ button {
   height:100px;
   width:100px;
   border: 2px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
 }

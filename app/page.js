@@ -2,6 +2,7 @@
 import styles from './page.module.css'
 import {useState} from 'react';
 
+//Make timerid global
 let timerId;
 
 //Button Component
@@ -18,7 +19,8 @@ export default function Home() {
   const interval = 2000;
   let randomColor = 0;
 
-  //Inital call to randomise BG
+  //Inital call to randomise BG: timer id is undefined initially so it will run only once and not on every state created
+  //It will assign a numerical id to timerId
   if(!timerId){
     timerId = setInterval(randomizeBG, interval);
     console.log(`Started ${timerId}`);
@@ -34,17 +36,21 @@ export default function Home() {
     }
   }
 
-  //Normal Button Logic
+  //Normal Button Click function
   function handleClick(myColor){
+    //Clear the setInterval 
     clearInterval(timerId);
     console.log(`Cleared ${timerId}`);
-    timerId = 1;
+    //Put timerId to non number: this is important 
+    timerId = "break";
     setColor(myColor);
   }
 
-  //Randomiser Button Logic
+  //Randomiser Button Click function
   function handleClickTimed(){
-    if(timerId == 1){
+    //Check if timerId is break, if it not then it will not start another interval
+
+    if(timerId == "break"){
       timerId = setInterval(randomizeBG, interval);
       console.log(`Started ${timerId}`);
     }
@@ -57,8 +63,12 @@ export default function Home() {
         <Button myColor={COLORS[1]}  onButtonClick={() => handleClick(COLORS[1])}/>
         <Button myColor={COLORS[2]}  onButtonClick={() => handleClick(COLORS[2])}/>
       </div>
-      <div className={styles.randomContainer}>
-        <button className={styles.randomButton} onClick={() => handleClickTimed()}></button>
+      <div className={styles.bottomContainer}>
+        <div style={{background:`${color}`, boxShadow:`10px -10px black`}}></div>
+        <div className={styles.randomContainer}>
+          <button className={styles.randomButton} onClick={() => handleClickTimed()}></button>
+        </div>  
+        <div style={{background:`${color}`, boxShadow:`-10px -10px black`}}></div>
       </div>
     </body>
   )
