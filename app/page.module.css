@@ -1,11 +1,10 @@
-.red{
-  background-color: #ff1a1a;
+.buttonContainer {
+  margin-top: 20px;
 }
-
-.blue {
-  background-color: #3385ff;
+.randomContainer{
+  border-radius: 0px 0px 5px 5px;
 }
-
-.green {
-  background-color:#33ff33;
+.randomButton {
+  margin-top: 0px;
+  background: conic-gradient(#DB4437 40deg, #F4B400 80deg, #F4B400 160deg, #0F9D58 200deg, #0F9D58 280deg, #DB4437 320deg);
 }

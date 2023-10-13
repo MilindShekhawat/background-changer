@@ -1,30 +1,60 @@
 "use client";
-//import styles from './page.module.css'
+import styles from './page.module.css'
 import {useState} from 'react';
+
+let timerId;
 
 function Button({myColor, onButtonClick}) {
   return (
     <button style={{background:`${myColor}`}} onClick={onButtonClick}>
-
   </button>
   )
 }
 
 export default function Home() {
-  const RED = "#DB4437";
-  const YELLOW = "#F4B400";
-  const GREEN = "#0F9D58";
+  const COLORS = ["#DB4437", "#F4B400" ,"#0F9D58"]; //RED, YELLOW, GREEN
   const [color, setColor] = useState("white");
+  const interval = 2000;
+  let randomColor = 0;
+
+  if(!timerId){
+    timerId = setInterval(randomizeBG, interval);
+    console.log(`Started ${timerId}`);
+  }
+
+  function randomizeBG() {
+    console.log(`COLOR set to ${randomColor}`);
+    setColor(COLORS[randomColor++]);
+    if(randomColor == COLORS.length){
+      randomColor = 0;
+    }
+  }
 
   function handleClick(myColor){
+    //timerId = setInterval(randomizeBG, interval);
+    clearInterval(timerId);
+    console.log(`Cleared ${timerId}`);
+    timerId = 1;
     setColor(myColor);
+  }
+
+  function handleClickTimed(){
+    if(timerId == 1){
+      timerId = setInterval(randomizeBG, interval);
+      console.log(`Started ${timerId}`);
+    }
   }
 
   return (
     <body style={{background:`${color}`}}>
-      <Button myColor={RED}     onButtonClick={() => handleClick(RED)}/>
-      <Button myColor={YELLOW}  onButtonClick={() => handleClick(YELLOW)}/>
-      <Button myColor={GREEN}   onButtonClick={() => handleClick(GREEN)}/>
+      <div className={styles.buttonContainer}>
+        <Button myColor={COLORS[0]}  onButtonClick={() => handleClick(COLORS[0])}/>
+        <Button myColor={COLORS[1]}  onButtonClick={() => handleClick(COLORS[1])}/>
+        <Button myColor={COLORS[2]}  onButtonClick={() => handleClick(COLORS[2])}/>
+      </div>
+      <div className={styles.randomContainer}>
+        <button className={styles.randomButton} onClick={() => handleClickTimed()}></button>
+      </div>
     </body>
   )
 }
